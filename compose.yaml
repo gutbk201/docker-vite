@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: vite-web
+    env_file: .env
+    build:
+      context: ./vite-project
+      target: dev
+      # args:
+      #   VITE_PORT: 1234
+    volumes:
+      - ./vite-project/src/:/usr/src/app/src/
+      - "/usr/src/app/node_modules"
+    ports:
+      - ${VITE_PORT}:${VITE_PORT}
+    # command: sh -c 'echo "VITE_PORT=${VITE_PORT}"'
